@@ -1547,6 +1547,10 @@ class Spaces extends Map {
 
         this._animateToSpaceOrdered(this.selectedSpace, false);
 
+        if (Main.panel.statusArea.appMenu) {
+            Main.panel.statusArea.appMenu.container.hide();
+        }
+
         let selected = this.selectedSpace.selectedWindow;
         if (selected && selected.fullscreen) {
             Tweener.addTween(selected.clone, {
@@ -1562,10 +1566,6 @@ class Spaces extends Map {
 
         toSpace = toSpace || this.selectedSpace;
         let monitorSpaces = this._getOrderedSpaces(toSpace.monitor);
-
-        if (Main.panel.statusArea.appMenu) {
-            Main.panel.statusArea.appMenu.container.hide();
-        }
 
         let currentMonitor = toSpace.monitor;
         this.selectedSpace = toSpace;
