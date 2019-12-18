@@ -284,7 +284,7 @@ class WorkspaceMenu extends PanelMenu.Button {
         delete this._navigator;
     }
 
-    _onEvent(actor, event) {
+    vfunc_event(event) {
         if (!this.menu) {
             log("?? no menu ??");
             Utils.print_stacktrace();
