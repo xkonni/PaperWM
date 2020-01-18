@@ -153,6 +153,8 @@ class Space extends Array {
         this.signals.connect(
             background, 'button-press-event',
             (actor, event) => {
+                if (inGrab)
+                    return;
                 let [aX, aY, mask] = global.get_pointer();
                 let [ok, x, y] =
                     this.actor.transform_stage_point(aX, aY);
@@ -1496,6 +1498,11 @@ class Spaces extends Map {
         let toSpace = this.spaceOf(to);
         let fromSpace = this.spaceOf(from);
 
+        for (let metaWindow of toSpace.getWindows()) {
+            print("Enforcing workspace memebership", toSpace.name, metaWindow.title)
+            metaWindow.change_workspace(toSpace.workspace);
+        }
+
         if (inPreview === PreviewMode.NONE && toSpace.monitor === fromSpace.monitor) {
             // Only start an animation if we're moving between workspaces on the
             // same monitor
@@ -2586,7 +2593,7 @@ function grabBegin(metaWindow, type) {
 }
 
 function grabEnd(metaWindow, type) {
-    if (!inGrab)
+    if (!inGrab || inGrab.dnd)
         return;
 
     inGrab.end();
