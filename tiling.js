@@ -2863,7 +2863,7 @@ function resizeHInc(metaWindow) {
     let workArea = space.workArea();
 
     let maxHeight = workArea.height - prefs.horizontal_margin*2 - prefs.window_gap;
-    let step = Math.floor(maxHeight * 0.1)
+    let step = Math.floor(maxHeight * 0.05)
     let currentHeight = Math.floor(frame.height/step)*step;
     let targetHeight = Math.min(currentHeight + step, maxHeight);
     let targetY = frame.y;
@@ -2883,7 +2883,7 @@ function resizeHDec(metaWindow) {
     let workArea = space.workArea();
 
     let maxHeight = workArea.height - prefs.horizontal_margin*2 - prefs.window_gap;
-    let step = Math.floor(maxHeight * 0.1);
+    let step = Math.floor(maxHeight * 0.05);
     let currentHeight = Math.floor(frame.height/step)*step;
     let minHeight = step;
     let targetHeight = Math.max(currentHeight - step, minHeight);
@@ -2904,7 +2904,7 @@ function resizeWInc(metaWindow) {
     let workArea = space.workArea();
 
     let maxWidth = workArea.width - prefs.horizontal_margin*2 - prefs.window_gap;
-    let step = Math.floor(maxWidth * 0.1);
+    let step = Math.floor(maxWidth * 0.05);
     let currentWidth = Math.floor(frame.width/step)*step;
     let targetWidth = Math.min(currentWidth + step, maxWidth);
     let targetX = frame.x;
@@ -2924,7 +2924,7 @@ function resizeWDec(metaWindow) {
     let workArea = space.workArea();
 
     let maxWidth = workArea.width - prefs.horizontal_margin*2 - prefs.window_gap;
-    let step = Math.floor(maxWidth * 0.1);
+    let step = Math.floor(maxWidth * 0.05);
     let currentWidth = Math.floor(frame.width/step)*step;
     let minWidth = step;
     let targetWidth = Math.max(currentWidth - step, minWidth);
